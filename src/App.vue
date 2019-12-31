@@ -22,46 +22,56 @@
 
       <v-spacer></v-spacer>
 
+      <span class="mr-1" @click="logout">Logout</span>
+
     </v-app-bar>
 
     <v-content>
       <v-row>
         <div>
+          <v-navigation-drawer
+            v-model="drawer"
+            absolute
+            left
+            temporary
+          >
+            <v-list
+              nav
+              dense
+            >
+              <v-list-item-group
+                v-model="group"
+                active-class="deep-red--text text--accent-4"
+              >
+                <v-list-item>
+                  <v-list-item-title><i class="fa fa-home"></i> Dashboard</v-list-item-title>
+                </v-list-item>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      left
-      temporary
-    >
-      <v-list
-        nav
-        dense
-      >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-red--text text--accent-4"
-        >
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
-          </v-list-item>
+                <v-list-item>
+                  <v-list-item-title><i class="fa fa-group"></i> Peserta Latihan</v-list-item-title>
+                </v-list-item>
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
+                <v-list-item>
+                  <v-list-item-title><i class="fa fa-gg-circle"></i> Iuran</v-list-item-title>
+                </v-list-item>
 
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
+                <v-list-item>
+                  <v-list-item-title><i class="fa fa-address-card"></i> Pendaftaran Ujian</v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
+              <sub class="bottom">Copyright 2019 - Alvian Zachry Faturrahman</sub>
+            </v-list>
+          </v-navigation-drawer>
+        </div>
+        </v-row>
+          
+        <div>
+          <router-view>
 
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-  </div>
-      </v-row>
+            <!-- Content will be rendered here -->
+
+          </router-view>
+        </div>
     </v-content>
   </v-app>
 </template>
@@ -83,6 +93,13 @@ export default {
     group: null,
   }),
 
+  methods: {
+    logout() {
+      window.alert("logout")
+    },
+
+  },
+
   watch: {
       group () {
         this.drawer = false
@@ -90,3 +107,14 @@ export default {
     },
 };
 </script>
+
+<style>
+  .bottom {
+    bottom: 3%;
+    position: fixed;
+  }
+
+  .btn {
+    margin-right: 10px;
+  }
+</style>
